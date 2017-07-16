@@ -6,11 +6,11 @@ import db.WriteDatabase;
 public class DBBase {
     protected final String DRIVER = "com.mysql.jdbc.Driver";
     // 连接路径
-    protected final String URL = "jdbc:mysql://mysqlguoweijie.cfafmoizeqxm.us-west-2.rds.amazonaws.com:3306/zufang_crawler?useUnicode=true&characterEncoding=UTF8&useSSL=false&rewriteBatchedStatements=true";
+    protected final String URL = "jdbc:mysql://127.0.0.1:3306/vt?useUnicode=true&characterEncoding=UTF8&useSSL=false&rewriteBatchedStatements=true";
     //    // 用户名
     protected final String USERNAME = "root";
     //    // 密码
-    protected final String PASSWORD = "xiangsi1314";
+    protected final String PASSWORD = "VN^GKMMpr*vA2T@%5Cx5";
 
 //
 //    protected final String DRIVER = "com.mysql.jdbc.Driver";

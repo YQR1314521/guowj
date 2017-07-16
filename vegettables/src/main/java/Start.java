@@ -1,8 +1,8 @@
+import Vegetables.VtCrawler;
+import Vegetables.ziruPipeline;
 import db.WriteDatabase;
 import com.virjar.dungproxy.client.webmagic.DungProxyDownloader;
 import us.codecraft.webmagic.Spider;
-import wuba.wbCrawler;
-import wuba.wbDatabasePipeline;
 
 
 /**
@@ -12,19 +12,11 @@ public class Start implements Runnable{
     public static void main(String[]args) throws Exception {
         DBBase dbBase = new DBBase();
         WriteDatabase writeDatabase =dbBase.getWrite();
-        Start start1 = new Start("58",writeDatabase);
-        Start start2 = new Start("ganji",writeDatabase);
-        Start start3 = new Start("huoju",writeDatabase);
-        Start start4 = new Start("fangtianxia",writeDatabase);
-        Start start5 = new Start("58gy",writeDatabase);
-        Start start7 = new Start("ziru",writeDatabase);
+        Start start1 = new Start("vt",writeDatabase);
+
 
         new Thread(start1).start();
-        new Thread(start2).start();
-        new Thread(start3).start();
-        new Thread(start4).start();
-        new Thread(start5).start();
-        new Thread(start7).start();
+
 
 
     }
@@ -48,21 +40,22 @@ public class Start implements Runnable{
      */
     @Override
     public void run() {
-        if (name.equals("58")) {
+        if (name.equals("vt")) {
             try {
-                wuba(writeDatabase);
+                vt(writeDatabase);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void wuba(WriteDatabase writeDatabase) throws Exception {
+    public void vt(WriteDatabase writeDatabase) throws Exception {
         System.out.println("wuba");
-        Spider.create(new wbCrawler())
-                .addUrl("http://bj.58.com/chuzu/0/pn1/")
-                .addPipeline(new wbDatabasePipeline(writeDatabase))
+        Spider.create(new VtCrawler())
+                .addUrl("http://www.xinfadi.com.cn/marketanalysis/1/list/1.shtml")
+                .addPipeline(new ziruPipeline(writeDatabase))
                 .setDownloader(new DungProxyDownloader())
+
                 .thread(2)
                 .run();
     }
